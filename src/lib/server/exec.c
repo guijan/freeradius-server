@@ -44,12 +44,6 @@ RCSID("$Id$")
 #include <ctype.h>
 #include <signal.h>
 
-#if defined(__APPLE__) || defined(__FreeBSD__)
-extern char **environ;
-#else
-#  include <unistd.h>
-#endif
-
 #ifdef HAVE_SYS_WAIT_H
 #  include <sys/wait.h>
 #endif
@@ -61,6 +55,8 @@ extern char **environ;
 #endif
 
 #define MAX_ENVP 1024
+
+extern char **environ;
 
 static _Thread_local char *env_arr[MAX_ENVP];				/* Avoid allocing 8k on the stack */
 static _Thread_local char env_buff[NUM_ELEMENTS(env_arr) * 128];	/* Avoid allocing 128k on the stack */

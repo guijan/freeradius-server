@@ -44,9 +44,7 @@ DIAG_ON(DIAG_UNKNOWN_PRAGMAS)
 #include <dlfcn.h>
 #include <semaphore.h>
 
-#if defined(__APPLE__) || defined(__FreeBSD__)
 extern char **environ;
-#endif
 
 #ifndef USE_ITHREADS
 #  error perl must be compiled with USE_ITHREADS
